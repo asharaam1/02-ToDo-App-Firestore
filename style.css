@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    height: 100vh;
+    /*vh = viewpoint => mostly hum flex box ma use karty han takke alignment sai rhe choti screens ma, ya 100% height lega bhly content small ho*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    /*1rem means 1× the root font size (by default, 1rem = 16px).*/
+}
+
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    /* this may make it responsive */
+    text-align: center;
+}
+
+.box {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #ff6a00, #ee0979);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#todo-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#todo-input {
+    flex: 1;
+    padding: 0.7rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: box-shadow 0.3s;
+    min-width: 0;
+}
+
+#add-todo-btn {
+    background: linear-gradient(135deg, #ff6a00, #ee0979);
+    border: none;
+    padding: 0.7rem 1rem;
+    color: white;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    flex: none;
+    /* element apni default size maintain karega, na grow hoga na shrink karega */
+}
+
+#add-todo-btn:hover {
+    transform: scale(1.1);
+}
+
+.todo-list {
+    list-style: none;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.todo-list li {
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+
+.todo-btn {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.todo-btn:hover {
+    transform: scale(1.2);
+}
+
+.todo-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ff6a00, #ee0979);
+    border-radius: 10px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+/*
+1️⃣ ::-webkit-scrollbar → Scrollbar ki width define karta hai.
+2️⃣ ::-webkit-scrollbar-thumb → Move hone wale part (thumb) ka color aur shape set karta hai.
+3️⃣ ::-webkit-scrollbar-track → Scrollbar ka background set karta hai. 
+*/
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Yeh animation element ko smoothly fade-in aur upar se neeche slide-in karti hai */
+
+
+/* Media Queries for Mobile */
+@media (max-width: 576px) {
+    .box {
+        font-size: 1.5rem;
+        /* Smaller title for mobile */
+    }
+
+    #todo-input,
+    #add-todo-btn {
+        font-size: 0.9rem;
+        /* Smaller input and button text */
+        padding: 0.6rem;
+        /* Adjust padding */
+    }
+
+    .todo-list li {
+        padding: 0.6rem;
+        /* Reduce padding for tasks */
+        font-size: 0.9rem;
+        /* Smaller task text */
+    }
+}
